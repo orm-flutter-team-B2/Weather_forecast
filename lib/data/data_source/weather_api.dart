@@ -5,7 +5,7 @@ import 'package:weather/data/dto/weather_dto.dart';
 
 class WeatherApi {
   final http.Client _client;
-  final String baseUrl = 'https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m,pressure_msl';
+  final String baseUrl = 'https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m,pressure_msl&timezone=Asia%2FTokyo';
 
   Future<WeatherDto> getWeatherDto(double lat, double lon) async {
     final response = await _client.get(
