@@ -12,8 +12,15 @@ class WeatherViewModel with ChangeNotifier {
   WeatherViewModelState get state => _state;
 
   void fetchWeather(double lat, double lon) async {
+    _state = _state.copyWith(
+        isLoading: true
+    );
+
+    notifyListeners();
+
     final today = await todayWeatherInfoUseCase.getTodayWeatherInfo(lat, lon);
     _state = _state.copyWith(
+      isLoading: false,
       today: today
     );
 
