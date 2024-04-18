@@ -14,7 +14,9 @@ class WeatherViewModelState with _$WeatherViewModelState {
     @Default([]) List<num> weatherCode,
     @Default([]) List<num> relativeHumidity,
     @Default([]) List<num> windSpeed,
+    @Default([{}]) List<Map<String, dynamic>> weekWeather,
   }) = _WeatherViewModelState;
 
-  factory WeatherViewModelState.fromJson(Map<String, Object?> json) => _$WeatherViewModelStateFromJson(json);
+  factory WeatherViewModelState.fromJson(Map<String, Object?> json) =>
+      _$WeatherViewModelStateFromJson(json);
 }

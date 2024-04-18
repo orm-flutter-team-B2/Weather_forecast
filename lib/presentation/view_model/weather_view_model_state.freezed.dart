@@ -28,6 +28,8 @@ mixin _$WeatherViewModelState {
   List<num> get weatherCode => throw _privateConstructorUsedError;
   List<num> get relativeHumidity => throw _privateConstructorUsedError;
   List<num> get windSpeed => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get weekWeather =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +50,8 @@ abstract class $WeatherViewModelStateCopyWith<$Res> {
       List<num> temperature,
       List<num> weatherCode,
       List<num> relativeHumidity,
-      List<num> windSpeed});
+      List<num> windSpeed,
+      List<Map<String, dynamic>> weekWeather});
 }
 
 /// @nodoc
@@ -72,6 +75,7 @@ class _$WeatherViewModelStateCopyWithImpl<$Res,
     Object? weatherCode = null,
     Object? relativeHumidity = null,
     Object? windSpeed = null,
+    Object? weekWeather = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -102,6 +106,10 @@ class _$WeatherViewModelStateCopyWithImpl<$Res,
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
               as List<num>,
+      weekWeather: null == weekWeather
+          ? _value.weekWeather
+          : weekWeather // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ) as $Val);
   }
 }
@@ -122,7 +130,8 @@ abstract class _$$WeatherViewModelStateImplCopyWith<$Res>
       List<num> temperature,
       List<num> weatherCode,
       List<num> relativeHumidity,
-      List<num> windSpeed});
+      List<num> windSpeed,
+      List<Map<String, dynamic>> weekWeather});
 }
 
 /// @nodoc
@@ -144,6 +153,7 @@ class __$$WeatherViewModelStateImplCopyWithImpl<$Res>
     Object? weatherCode = null,
     Object? relativeHumidity = null,
     Object? windSpeed = null,
+    Object? weekWeather = null,
   }) {
     return _then(_$WeatherViewModelStateImpl(
       isLoading: null == isLoading
@@ -174,6 +184,10 @@ class __$$WeatherViewModelStateImplCopyWithImpl<$Res>
           ? _value._windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
               as List<num>,
+      weekWeather: null == weekWeather
+          ? _value._weekWeather
+          : weekWeather // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ));
   }
 }
@@ -188,13 +202,15 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
       final List<num> temperature = const [],
       final List<num> weatherCode = const [],
       final List<num> relativeHumidity = const [],
-      final List<num> windSpeed = const []})
+      final List<num> windSpeed = const [],
+      final List<Map<String, dynamic>> weekWeather = const [{}]})
       : _today = today,
         _time = time,
         _temperature = temperature,
         _weatherCode = weatherCode,
         _relativeHumidity = relativeHumidity,
-        _windSpeed = windSpeed;
+        _windSpeed = windSpeed,
+        _weekWeather = weekWeather;
 
   factory _$WeatherViewModelStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherViewModelStateImplFromJson(json);
@@ -257,9 +273,18 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
     return EqualUnmodifiableListView(_windSpeed);
   }
 
+  final List<Map<String, dynamic>> _weekWeather;
+  @override
+  @JsonKey()
+  List<Map<String, dynamic>> get weekWeather {
+    if (_weekWeather is EqualUnmodifiableListView) return _weekWeather;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_weekWeather);
+  }
+
   @override
   String toString() {
-    return 'WeatherViewModelState(isLoading: $isLoading, today: $today, time: $time, temperature: $temperature, weatherCode: $weatherCode, relativeHumidity: $relativeHumidity, windSpeed: $windSpeed)';
+    return 'WeatherViewModelState(isLoading: $isLoading, today: $today, time: $time, temperature: $temperature, weatherCode: $weatherCode, relativeHumidity: $relativeHumidity, windSpeed: $windSpeed, weekWeather: $weekWeather)';
   }
 
   @override
@@ -278,7 +303,9 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
             const DeepCollectionEquality()
                 .equals(other._relativeHumidity, _relativeHumidity) &&
             const DeepCollectionEquality()
-                .equals(other._windSpeed, _windSpeed));
+                .equals(other._windSpeed, _windSpeed) &&
+            const DeepCollectionEquality()
+                .equals(other._weekWeather, _weekWeather));
   }
 
   @JsonKey(ignore: true)
@@ -291,7 +318,8 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
       const DeepCollectionEquality().hash(_temperature),
       const DeepCollectionEquality().hash(_weatherCode),
       const DeepCollectionEquality().hash(_relativeHumidity),
-      const DeepCollectionEquality().hash(_windSpeed));
+      const DeepCollectionEquality().hash(_windSpeed),
+      const DeepCollectionEquality().hash(_weekWeather));
 
   @JsonKey(ignore: true)
   @override
@@ -310,13 +338,15 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
 
 abstract class _WeatherViewModelState implements WeatherViewModelState {
   const factory _WeatherViewModelState(
-      {final bool isLoading,
-      final Map<String, dynamic> today,
-      final List<String> time,
-      final List<num> temperature,
-      final List<num> weatherCode,
-      final List<num> relativeHumidity,
-      final List<num> windSpeed}) = _$WeatherViewModelStateImpl;
+          {final bool isLoading,
+          final Map<String, dynamic> today,
+          final List<String> time,
+          final List<num> temperature,
+          final List<num> weatherCode,
+          final List<num> relativeHumidity,
+          final List<num> windSpeed,
+          final List<Map<String, dynamic>> weekWeather}) =
+      _$WeatherViewModelStateImpl;
 
   factory _WeatherViewModelState.fromJson(Map<String, dynamic> json) =
       _$WeatherViewModelStateImpl.fromJson;
@@ -335,6 +365,8 @@ abstract class _WeatherViewModelState implements WeatherViewModelState {
   List<num> get relativeHumidity;
   @override
   List<num> get windSpeed;
+  @override
+  List<Map<String, dynamic>> get weekWeather;
   @override
   @JsonKey(ignore: true)
   _$$WeatherViewModelStateImplCopyWith<_$WeatherViewModelStateImpl>
