@@ -18,12 +18,13 @@ class WeekWeatherInfoUseCase {
       final formattedDate = DateFormat('yyyy-MM-ddTHH').format(today);
       final index = data.time.indexOf('$formattedDate:00');
       Map<String, dynamic> dataResult = {
-        'time': '${today.year}-${today.month}-${today.day} $todayWeekday',
-        'temperature': data.temperature[index].toString(),
+        'time': '${today.month}-${today.day} $todayWeekday',
+        'midnightTemperature': data.temperature[24 * i].toString(),
+        'noonTemperature': data.temperature[(i*24) + 12].toString(),
         'weatherCode': WeatherIcon.getByCode(data.weatherCode[index]),
-        'windSpeed': data.windSpeed[index].toString(),
-        'relativeHumidity': data.relativeHumidity[index].toString()
       };
+      print(dataResult);
+      print('testtestsetes');
       result.add(dataResult);
     }
 
