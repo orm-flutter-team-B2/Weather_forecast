@@ -9,7 +9,7 @@ part of 'weather_view_model_state.dart';
 _$WeatherViewModelStateImpl _$$WeatherViewModelStateImplFromJson(
         Map<String, dynamic> json) =>
     _$WeatherViewModelStateImpl(
-      today: json['today'] as List<dynamic>? ?? const [],
+      today: json['today'] as Map<String, dynamic>? ?? const {},
       time:
           (json['time'] as List<dynamic>?)?.map((e) => e as String).toList() ??
               const [],

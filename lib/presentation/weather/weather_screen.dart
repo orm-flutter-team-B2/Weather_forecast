@@ -33,7 +33,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 child: Column(
                   children: [
                     Text(
-                      viewModel.state.today[0],
+                      viewModel.state.today['time'],
                       style: const TextStyle(fontSize: 40),
                     ),
                     const Text(
@@ -44,15 +44,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          viewModel.state.today[1],
+                          viewModel.state.today['temperature'],
                           style: const TextStyle(fontSize: 30),
                         ),
+                        Icon(viewModel.state.today['weatherCode'].icon),
                         Text(
-                          viewModel.state.today[2],
-                          style: const TextStyle(fontSize: 30),
-                        ),
-                        Text(
-                          viewModel.state.today[3],
+                          viewModel.state.today['windSpeed'],
                           style: const TextStyle(fontSize: 30),
                         ),
                       ],

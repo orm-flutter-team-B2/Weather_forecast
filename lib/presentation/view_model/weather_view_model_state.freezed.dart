@@ -21,7 +21,7 @@ WeatherViewModelState _$WeatherViewModelStateFromJson(
 
 /// @nodoc
 mixin _$WeatherViewModelState {
-  List<dynamic> get today => throw _privateConstructorUsedError;
+  Map<String, dynamic> get today => throw _privateConstructorUsedError;
   List<String> get time => throw _privateConstructorUsedError;
   List<num> get temperature => throw _privateConstructorUsedError;
   List<num> get weatherCode => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $WeatherViewModelStateCopyWith<$Res> {
       _$WeatherViewModelStateCopyWithImpl<$Res, WeatherViewModelState>;
   @useResult
   $Res call(
-      {List<dynamic> today,
+      {Map<String, dynamic> today,
       List<String> time,
       List<num> temperature,
       List<num> weatherCode,
@@ -74,7 +74,7 @@ class _$WeatherViewModelStateCopyWithImpl<$Res,
       today: null == today
           ? _value.today
           : today // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as Map<String, dynamic>,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ abstract class _$$WeatherViewModelStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<dynamic> today,
+      {Map<String, dynamic> today,
       List<String> time,
       List<num> temperature,
       List<num> weatherCode,
@@ -140,7 +140,7 @@ class __$$WeatherViewModelStateImplCopyWithImpl<$Res>
       today: null == today
           ? _value._today
           : today // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as Map<String, dynamic>,
       time: null == time
           ? _value._time
           : time // ignore: cast_nullable_to_non_nullable
@@ -169,7 +169,7 @@ class __$$WeatherViewModelStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
   const _$WeatherViewModelStateImpl(
-      {final List<dynamic> today = const [],
+      {final Map<String, dynamic> today = const {},
       final List<String> time = const [],
       final List<num> temperature = const [],
       final List<num> weatherCode = const [],
@@ -185,13 +185,13 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
   factory _$WeatherViewModelStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherViewModelStateImplFromJson(json);
 
-  final List<dynamic> _today;
+  final Map<String, dynamic> _today;
   @override
   @JsonKey()
-  List<dynamic> get today {
-    if (_today is EqualUnmodifiableListView) return _today;
+  Map<String, dynamic> get today {
+    if (_today is EqualUnmodifiableMapView) return _today;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_today);
+    return EqualUnmodifiableMapView(_today);
   }
 
   final List<String> _time;
@@ -290,7 +290,7 @@ class _$WeatherViewModelStateImpl implements _WeatherViewModelState {
 
 abstract class _WeatherViewModelState implements WeatherViewModelState {
   const factory _WeatherViewModelState(
-      {final List<dynamic> today,
+      {final Map<String, dynamic> today,
       final List<String> time,
       final List<num> temperature,
       final List<num> weatherCode,
@@ -301,7 +301,7 @@ abstract class _WeatherViewModelState implements WeatherViewModelState {
       _$WeatherViewModelStateImpl.fromJson;
 
   @override
-  List<dynamic> get today;
+  Map<String, dynamic> get today;
   @override
   List<String> get time;
   @override
