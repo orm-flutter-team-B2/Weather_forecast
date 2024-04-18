@@ -25,63 +25,106 @@ class _WeatherScreenState extends State<WeatherScreen> {
     final viewModel = context.watch<WeatherViewModel>();
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Center(
-              child: Container(
-                color: Colors.red,
-                child: Column(
-                  children: [
-                    Text(
-                      viewModel.state.today['time'],
-                      style: const TextStyle(fontSize: 40),
-                    ),
-                    const Text(
-                      '서울특별시',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          viewModel.state.today['temperature'],
-                          style: const TextStyle(fontSize: 30),
-                        ),
-                        Icon(viewModel.state.today['weatherCode'].icon),
-                        Text(
-                          viewModel.state.today['windSpeed'],
-                          style: const TextStyle(fontSize: 30),
-                        ),
-                      ],
-                    ),
-                    ListView(
-                      shrinkWrap: true,
-                      children: [
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('오늘'),
-                            Icon(Icons.cloud),
-                            Text('온도 , 온도')
-                          ],
-                        ),
-                        Container(
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('오늘'),
-                              Icon(Icons.cloud),
-                              Text('온도 , 온도')
-                            ],
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/background_image.jpeg'),
+              fit: BoxFit.cover
+            )
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 32),
+                child: Container(
+                  width: 330,
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(64),
+                    color: Colors.black.withOpacity(0.4),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        viewModel.state.today['time'],
+                        style: const TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                      const Text(
+                        '서울특별시',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Text(
+                              '${viewModel.state.today['temperature']}°C',
+                              style: const TextStyle(fontSize: 30, color: Colors.white), textAlign: TextAlign.right
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Expanded(
+                              flex: 1,
+                              child: Text('|', style: TextStyle(fontSize: 28, color: Colors.white), textAlign: TextAlign.center,)
+                          ),
+                          Expanded(
+                            flex: 3,
+                              child: Align(child: Icon(viewModel.state.today['weatherCode'].icon, color: Colors.white,), alignment: Alignment.centerLeft,)
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Text(
+                                "풍속 : ${viewModel.state.today['windSpeed']}",
+                                style: const TextStyle(fontSize: 24, color: Colors.white), textAlign: TextAlign.right
+                            ),
+                          ),
+                          Expanded(
+                              flex: 1,
+                              child: Text('|', style: TextStyle(fontSize: 28, color: Colors.white), textAlign: TextAlign.center,)
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: Text(
+                                "습도 : ${viewModel.state.today['relativeHumidity']}",
+                                style: const TextStyle(fontSize: 24, color: Colors.white),
+                              ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
+              ListView(
+                shrinkWrap: true,
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('오늘'),
+                      Icon(Icons.cloud),
+                      Text('온도 , 온도')
+                    ],
+                  ),
+                  Container(
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('오늘'),
+                        Icon(Icons.cloud),
+                        Text('온도 , 온도')
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
