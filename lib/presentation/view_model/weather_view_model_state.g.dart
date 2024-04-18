@@ -9,6 +9,7 @@ part of 'weather_view_model_state.dart';
 _$WeatherViewModelStateImpl _$$WeatherViewModelStateImplFromJson(
         Map<String, dynamic> json) =>
     _$WeatherViewModelStateImpl(
+      isLoading: json['isLoading'] as bool? ?? false,
       today: json['today'] as Map<String, dynamic>? ?? const {},
       time:
           (json['time'] as List<dynamic>?)?.map((e) => e as String).toList() ??
@@ -34,6 +35,7 @@ _$WeatherViewModelStateImpl _$$WeatherViewModelStateImplFromJson(
 Map<String, dynamic> _$$WeatherViewModelStateImplToJson(
         _$WeatherViewModelStateImpl instance) =>
     <String, dynamic>{
+      'isLoading': instance.isLoading,
       'today': instance.today,
       'time': instance.time,
       'temperature': instance.temperature,
