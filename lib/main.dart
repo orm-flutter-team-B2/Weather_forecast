@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/data/data_source/weather_api.dart';
 import 'package:weather/data/repository/weather_repository_impl.dart';
-import 'package:weather/presentation/weather/weather_view_model.dart';
+import 'package:weather/presentation/view_model/weather_view_model.dart';
 
 import 'presentation/weather/weather_screen.dart';
 
