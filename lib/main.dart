@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/data/data_source/weather_api.dart';
 import 'package:weather/data/repository/weather_repository_impl.dart';
+import 'package:weather/domain/repository/weather_repository.dart';
+import 'package:weather/presentation/view_model/today_weather_info_use_case.dart';
 import 'package:weather/presentation/view_model/weather_view_model.dart';
 
 import 'presentation/weather/weather_screen.dart';
@@ -23,8 +25,10 @@ class MyApp extends StatelessWidget {
         ),
         home: ChangeNotifierProvider(
             create: (_) => WeatherViewModel(
-                weatherRepository:
-                    WeatherRepositoryImpl(weatherApi: WeatherApi())),
-            child: WeatherScreen()));
+                  todayWeatherInfoUseCase: TodayWeatherInfoUseCase(
+                    repository: WeatherRepositoryImpl(weatherApi: WeatherApi()),
+                  ),
+                ),
+            child: const WeatherScreen()));
   }
 }

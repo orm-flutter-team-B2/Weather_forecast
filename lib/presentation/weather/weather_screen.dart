@@ -3,9 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/presentation/view_model/weather_view_model.dart';
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({Key? key}) : super(key: key);
 
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  // latitude=37.5786&longitude=126.9764
+  @override
+  void initState() {
+    Future.microtask(() {
+      return context.read<WeatherViewModel>().fetchWeather(37.5786, 126.9764);
+    });
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<WeatherViewModel>();
@@ -18,35 +32,35 @@ class WeatherScreen extends StatelessWidget {
                 color: Colors.red,
                 child: Column(
                   children: [
-                    const Text(
-                      '나의 위치',
-                      style: TextStyle(fontSize: 40),
+                    Text(
+                      viewModel.state.today[0],
+                      style: const TextStyle(fontSize: 40),
                     ),
                     const Text(
                       '서울특별시',
                       style: TextStyle(fontSize: 16),
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '24°',
-                          style: TextStyle(fontSize: 30),
+                          viewModel.state.today[1],
+                          style: const TextStyle(fontSize: 30),
                         ),
                         Text(
-                          '맑음',
-                          style: TextStyle(fontSize: 30),
+                          viewModel.state.today[2],
+                          style: const TextStyle(fontSize: 30),
                         ),
                         Text(
-                          '36%',
-                          style: TextStyle(fontSize: 30),
+                          viewModel.state.today[3],
+                          style: const TextStyle(fontSize: 30),
                         ),
                       ],
                     ),
                     ListView(
                       shrinkWrap: true,
                       children: [
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('오늘'),
