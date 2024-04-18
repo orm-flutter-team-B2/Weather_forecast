@@ -124,26 +124,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     ),
                     ListView(
                       shrinkWrap: true,
-                      children: [
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('오늘'),
-                            Icon(Icons.cloud),
-                            Text('온도 , 온도')
-                          ],
-                        ),
-                        Container(
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('오늘'),
-                              Icon(Icons.cloud),
-                              Text('온도 , 온도')
-                            ],
-                          ),
-                        ),
-                      ],
+                      children: viewModel.state.weekWeather.map((e) {
+                        return Text(e['temperature']);
+                      }).toList(),
                     ),
                   ],
                 ),

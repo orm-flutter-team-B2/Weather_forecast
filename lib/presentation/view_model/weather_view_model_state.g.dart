@@ -30,6 +30,10 @@ _$WeatherViewModelStateImpl _$$WeatherViewModelStateImplFromJson(
               ?.map((e) => e as num)
               .toList() ??
           const [],
+      weekWeather: (json['weekWeather'] as List<dynamic>?)
+              ?.map((e) => e as Map<String, dynamic>)
+              .toList() ??
+          const [{}],
     );
 
 Map<String, dynamic> _$$WeatherViewModelStateImplToJson(
@@ -42,4 +46,5 @@ Map<String, dynamic> _$$WeatherViewModelStateImplToJson(
       'weatherCode': instance.weatherCode,
       'relativeHumidity': instance.relativeHumidity,
       'windSpeed': instance.windSpeed,
+      'weekWeather': instance.weekWeather,
     };
